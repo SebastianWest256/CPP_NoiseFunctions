@@ -1,0 +1,1 @@
+//functions for coloring maps, expects values from -1 to 1
