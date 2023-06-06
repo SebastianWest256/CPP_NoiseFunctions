@@ -43,14 +43,14 @@ std::vector<std::vector<float>> CreateMap(int width, int height) {
     return map;
 }
 
-void DrawMap(SDL_Surface* screen, std::vector<std::vector<float>>& map) {
-    int height = map[0].size();
-    int width = map.size();
+void renderMap(SDL_Surface* screen, int width, int height, std::vector<std::vector<float>>& map) {
+
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
-            setPixelColor(screen, j, i, getColor(((map[j][i]*1) + 1.0) * 128.0, ((map[j][i]*1) + 1.0) * 128.0, ((map[j][i]*1) + 1.0) * 128.0));
+            setPixelColor(screen, j, i, standard_color(map[j][i]));
         }
     }
+
 }
 
 void HandleEvents(bool& running) {
@@ -84,7 +84,7 @@ int main(int argc, char* argv[]) {
 
     std::vector<std::vector<float>> map = CreateMap(screenWidth, screenHeight);
 
-    DrawMap(screen, map);
+    renderMap(screen, screenWidth, screenHeight, map);
 
     //init end
 

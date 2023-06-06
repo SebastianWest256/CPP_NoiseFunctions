@@ -34,7 +34,7 @@ std::vector<std::vector<float>> gradient_map(int width, int height, float min, f
 
 }
 
-//increases the size of the map to the next power of 2 then randomly assigns a value to each index, sums up the values at decreasing intervals at decreasing weights, not producing very useful results yet
+//increases the size of the map to the next power of 2 then randomly assigns a value to each index, sums up the values at decreasing intervals at decreasing weights, technically functional but not producing very useful results yet
 std::vector<std::vector<float>> weighted_interval_map(int width, int height, float min, float max) {
 
     std::vector<std::vector<float>> final_map(width, std::vector<float>(height));
