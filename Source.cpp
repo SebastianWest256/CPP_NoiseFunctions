@@ -6,6 +6,7 @@
 #include <vector>
 #include "MathFunctions.cpp"
 #include "NoiseFunctions.cpp"
+#include "ColorFunctions.cpp"
 #include "RenderFunctions.cpp"
 
 const int screenWidth = 1000;
@@ -21,7 +22,7 @@ void InitializeSDL() {
 }
 
 SDL_Window* CreateWindow() {
-    SDL_Window* window = SDL_CreateWindow("2Dgraphics", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screenWidth, screenHeight, SDL_WINDOW_SHOWN);
+    SDL_Window* window = SDL_CreateWindow("MapRender", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screenWidth, screenHeight, SDL_WINDOW_SHOWN);
     if (!window) {
         // Handle error
         SDL_Quit();
@@ -38,7 +39,7 @@ SDL_Surface* GetWindowSurface(SDL_Window* window) {
 
 std::vector<std::vector<float>> CreateMap(int width, int height) {
     std::vector<std::vector<float>> map(width, std::vector<float>(height));
-    map = random_map(width, height, -1, 1);
+    map = weighted_interval_map(width, height, -1, 1);
     return map;
 }
 
@@ -47,7 +48,7 @@ void DrawMap(SDL_Surface* screen, std::vector<std::vector<float>>& map) {
     int width = map.size();
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
-            setPixelColor(screen, j, i, getColor(((map[j][i]*0.5) + 1.0) * 128.0, ((map[j][i]*-1) + 1.0) * 128.0, ((map[j][i]*1) + 1.0) * 128.0));
+            setPixelColor(screen, j, i, getColor(((map[j][i]*1) + 1.0) * 128.0, ((map[j][i]*1) + 1.0) * 128.0, ((map[j][i]*1) + 1.0) * 128.0));
         }
     }
 }
