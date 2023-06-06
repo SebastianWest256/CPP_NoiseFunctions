@@ -2,6 +2,7 @@
 
 void setPixelColor(SDL_Surface* surface, int x, int y, Uint32 color) {
 
+    //bounds checking \/
     //x = std::max(x, 0);
     //x = std::min(x, screenWidth - 1);
     //y = std::max(y, 0);

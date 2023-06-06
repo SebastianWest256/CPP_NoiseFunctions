@@ -39,7 +39,9 @@ SDL_Surface* GetWindowSurface(SDL_Window* window) {
 
 std::vector<std::vector<float>> CreateMap(int width, int height) {
     std::vector<std::vector<float>> map(width, std::vector<float>(height));
+    //select noise function
     map = weighted_interval_map(width, height, -1, 1);
+    //
     return map;
 }
 
@@ -47,7 +49,9 @@ void renderMap(SDL_Surface* screen, int width, int height, std::vector<std::vect
 
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
+            //select coloring function
             setPixelColor(screen, j, i, standard_color(map[j][i]));
+            //
         }
     }
 
@@ -82,8 +86,10 @@ int main(int argc, char* argv[]) {
 
     //init start
 
+    //create the map and assign its values
     std::vector<std::vector<float>> map = CreateMap(screenWidth, screenHeight);
 
+    //color the map and render it to the screen
     renderMap(screen, screenWidth, screenHeight, map);
 
     //init end

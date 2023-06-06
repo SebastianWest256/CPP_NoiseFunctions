@@ -1,5 +1,6 @@
-//functions for coloring maps, expects values from -1 to 1
+//functions for coloring pixels, expects a value from -1 to 1, returns an integer representing a color
 
+//colors pixels blue, yellow, and green based on their value
 int standard_color(float value) {
 
 	if (value > 0.2) {

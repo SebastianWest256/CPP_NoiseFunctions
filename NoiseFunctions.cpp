@@ -94,7 +94,3 @@ std::vector<std::vector<float>> weighted_interval_map(int width, int height, flo
     return final_map;
 
 }
-
-
-
-
