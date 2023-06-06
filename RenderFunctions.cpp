@@ -1,3 +1,5 @@
+//useful functions for drawing various shapes
+
 void setPixelColor(SDL_Surface* surface, int x, int y, Uint32 color) {
 
     //x = std::max(x, 0);
