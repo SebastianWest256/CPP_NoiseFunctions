@@ -44,6 +44,7 @@ std::vector<std::vector<float>> CreateMap(int width, int height) {
     map = weighted_interval_map(width, height, -1, 1);
     
     //select filter functions
+    map = bound_filter(map, width, height, -0.999, 0.999);
     map = inversion_filter(map, width, height);
 
     return map;
@@ -77,8 +78,7 @@ void CleanUp(SDL_Window* window) {
 
 int main(int argc, char* argv[]) {
 
-    //srand(time(0));
-    srand(2);
+    srand(time(0));
 
     Uint32 frameStart;
     int frameTime;

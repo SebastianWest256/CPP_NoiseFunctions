@@ -86,7 +86,7 @@ std::vector<std::vector<float>> weighted_interval_map(int width, int height, flo
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
 
-            final_map[j][i] = map(sum_map[j][i],-4,4,-1,1);
+            final_map[j][i] = sum_map[j][i];
 
         }
     }
