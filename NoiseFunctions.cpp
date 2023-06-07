@@ -94,3 +94,34 @@ std::vector<std::vector<float>> weighted_interval_map(int width, int height, flo
     return final_map;
 
 }
+
+std::vector<std::vector<float>> line_map(int width, int height, int iterations, float range) {
+
+    std::vector<std::vector<float>> final_map(width, std::vector<float>(height));
+
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
+
+            final_map[j][i] = 0;
+
+        }
+    }
+
+    int row;
+    float value;
+    for (int i = 0; i < iterations; i++) {
+        value = randomFloat(range*-1, range);
+        row = floor(randomFloat(0, width-1));
+        for (int j = 0; j < height; j++) {
+            final_map[row][j] += value;
+        }
+        value = randomFloat(range*-1, range);
+        row = floor(randomFloat(0, height-1));
+        for (int j = 0; j < width; j++) {
+            final_map[j][row] += value;
+        }
+    }
+
+    return final_map;
+
+}

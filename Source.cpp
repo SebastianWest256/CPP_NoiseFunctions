@@ -42,10 +42,12 @@ std::vector<std::vector<float>> CreateMap(int width, int height) {
     std::vector<std::vector<float>> map(width, std::vector<float>(height));
     //select noise function
     map = weighted_interval_map(width, height, -1, 1);
+    //map = line_map(width, height, 10000, 0.1);
     
     //select filter functions
+    map = blur_filter(map, width, height, 20);
     map = bound_filter(map, width, height, -0.999, 0.999);
-    map = inversion_filter(map, width, height);
+    //map = inversion_filter(map, width, height);
 
     return map;
 }
@@ -55,7 +57,8 @@ void renderMap(SDL_Surface* screen, int width, int height, std::vector<std::vect
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
             //select coloring function
-            setPixelColor(screen, j, i, standard_color(map[j][i]));
+            //setPixelColor(screen, j, i, standard_color(map[j][i]));
+            setPixelColor(screen, j, i, basic_terrain_color(map[j][i]));
             //
         }
     }
