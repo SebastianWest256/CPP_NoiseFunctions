@@ -7,6 +7,7 @@
 #include "MathFunctions.cpp"
 #include "NoiseFunctions.cpp"
 #include "ColorFunctions.cpp"
+#include "FilterFunctions.cpp"
 #include "RenderFunctions.cpp"
 
 const int screenWidth = 1000;
@@ -41,7 +42,10 @@ std::vector<std::vector<float>> CreateMap(int width, int height) {
     std::vector<std::vector<float>> map(width, std::vector<float>(height));
     //select noise function
     map = weighted_interval_map(width, height, -1, 1);
-    //
+    
+    //select filter functions
+    map = inversion_filter(map, width, height);
+
     return map;
 }
 
@@ -73,7 +77,8 @@ void CleanUp(SDL_Window* window) {
 
 int main(int argc, char* argv[]) {
 
-    srand(time(0));
+    //srand(time(0));
+    srand(2);
 
     Uint32 frameStart;
     int frameTime;
